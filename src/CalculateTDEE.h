@@ -13,20 +13,6 @@
 class CalculateTDEE {
     public:
         void queryUser();
-
-        template <typename T>
-        //Type of cin that checks for invalid input
-        void safeCin(T &value, std::string warningMessage) { //TODO: Find a way to move safeCin into the CalculateTDEE.cpp file.
-            std::cin >> value;
-
-            if (std::cin.fail()) {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-                std::cout << warningMessage;
-                safeCin(value, warningMessage);
-            }
-        }
     private:
         struct BodyDetails {
             double weight{};
@@ -36,7 +22,7 @@ class CalculateTDEE {
             double activityLevel{};
         };
 
-        double calcTDEE(const BodyDetails& body);           //TDEE = Total Daily Energy Expenditure
+        double calcTDEE(const BodyDetails& body); //TDEE = Total Daily Energy Expenditure
 };
 
 #endif
