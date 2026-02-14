@@ -13,16 +13,16 @@ void CalculateTDEE::queryUser() {
     BodyDetails bodyDetails;
 
     std::cout << "Enter weight in kilograms: ";
-    std::cin >> bodyDetails.weight;
+    safeCin(bodyDetails.weight, "Invalid Input. Your weight must be a number. Input: ");
 
     std::cout << "Enter height in centimeters: ";
-    std::cin >> bodyDetails.centimeterHeight;
+    safeCin(bodyDetails.centimeterHeight, "Invalid Input. Your height must be a number. Input: ");
 
     std::cout << "Enter age in years: ";
-    std::cin >> bodyDetails.ageYears;
+    safeCin(bodyDetails.ageYears, "Invalid Input. Your age must be a number. Input: ");
 
     std::cout << "Are you a male? Answer with '1' (yes) or '0' (no): ";          //TODO: Enable inputs as 'yes' and 'no'.
-    std::cin >> bodyDetails.isMale;
+    safeCin(bodyDetails.isMale, "Invalid Input. You must respond with either 1 (yes) or 0 (no). Input: ");
 
     std::cout << "Which of the following activity levels best Describes you?\n"; //TODO: Inputs should be 1-5 instead of the actual multiplier.
     std::cout << "1. Sedentary (1.25)\n";
@@ -30,7 +30,7 @@ void CalculateTDEE::queryUser() {
     std::cout << "3. Moderately Active (1.55)\n";
     std::cout << "4. Very Active (1.725)\n";
     std::cout << "5. Extra Active (1.9)\n";
-    std::cin >> bodyDetails.activityLevel;
+    safeCin(bodyDetails.activityLevel, "Invalid Input. Please input an activity multiplier (listed above.) Input: ");
 
     std::cout << "Required daily calories: ";
     std::cout << calcTDEE(bodyDetails);

@@ -16,6 +16,6 @@ int main() {
         calcTDEE->queryUser();
         std::cout << '\n';
         std::cout << "Would you like to continue? Input 0 (yes) or 1 (no): "; //TODO: Enable user to input yes or no instead of 1 or 0.
-        std::cin >> exit;
+        calcTDEE->safeCin(exit, "Invalid Input. You must respond 0 (yes) or 1 (no)");
     }
 }
