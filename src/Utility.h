@@ -28,7 +28,7 @@ class Utility {
 
         //Enables user input as 'yes' (true) or 'no' (false) for a boolean value
         void yesOrNoBool(bool& boolean) {
-            safeCin(userInput, "Your input must be 'yes' or 'no'");
+            safeCin(userInput, "Your input must be 'yes' or 'no'. Input: ");
 
             if (userInput == "yes") {
                 boolean = true;
@@ -37,7 +37,7 @@ class Utility {
                 boolean = false;
             }
             else {
-                std::cout << "Your input must be 'yes' or 'no'";
+                std::cout << "Your input must be 'yes' or 'no'. Input: ";
                 yesOrNoBool(boolean);
             }
         }

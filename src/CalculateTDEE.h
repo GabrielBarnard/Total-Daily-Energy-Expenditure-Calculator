@@ -21,6 +21,7 @@ class CalculateTDEE {
             bool isMale{};
             double activityLevel{};
         };
+        double activityLevelMultipliers[5] = {1.25, 1.375, 1.55, 1.725, 1.9};
 
         double calcTDEE(const BodyDetails& body); //TDEE = Total Daily Energy Expenditure
 };

@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <memory>
+#include <cmath>
 
 #include "CalculateTDEE.h"
 #include "Utility.h"
@@ -27,23 +28,36 @@ void CalculateTDEE::queryUser() {
     std::cout << "Are you a male? Answer with 'yes' or 'no': ";
     utility->yesOrNoBool(bodyDetails.isMale);
 
-    std::cout << "Which of the following activity levels best Describes you?\n"; //TODO: Inputs should be 1-5 instead of the actual multiplier.
+    std::cout << "Which of the following activity levels best Describes you?\n";
     std::cout << "1. Sedentary (1.25)\n";
     std::cout << "2. Lightly Active (1.375)\n";
     std::cout << "3. Moderately Active (1.55)\n";
     std::cout << "4. Very Active (1.725)\n";
     std::cout << "5. Extra Active (1.9)\n";
-    utility->safeCin(bodyDetails.activityLevel, "Invalid Input. Please input an activity multiplier (listed above.) Input: ");
+    std::cout << "Input: ";
+
+    while (true) {
+        utility->safeCin(bodyDetails.activityLevel, "Invalid Input. Please input a integer between 1-5. Input: ");
+
+        if (bodyDetails.activityLevel >= 1 && bodyDetails.activityLevel <= 5 && bodyDetails.activityLevel == (int) bodyDetails.activityLevel) {
+            bodyDetails.activityLevel = activityLevelMultipliers[static_cast<int>(bodyDetails.activityLevel) - 1];
+            break;
+        }
+        else {
+            std::cout << "Invalid Input. Please input a integer between 1-5. Input: ";
+        }
+    }
 
     std::cout << "Required daily calories: ";
-    std::cout << calcTDEE(bodyDetails);
+    std::cout << static_cast<int>(std::round(calcTDEE(bodyDetails)));
 }
 
 //Calculates the TDEE (Total Daily Energy Expenditure)
 double CalculateTDEE::calcTDEE(const BodyDetails& body) {
     if(body.isMale) {
         return ((10 * body.weight) + (6.25 * body.centimeterHeight) - (5 * body.ageYears) + 5) * body.activityLevel;   //Mifflin-St Jeor Equation (Male)
-    } else {
+    }
+    else {
         return ((10 * body.weight) + (6.25 * body.centimeterHeight) - (5 * body.ageYears) - 161) * body.activityLevel; //Mifflin-St Jeor Equation (Female)
     }
 
