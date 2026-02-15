@@ -4,7 +4,5 @@ How to run:
     Go into the 'src' directory and run the following command:
         Make all
 
-Not complete.
-
-This README was created on the 14th of February 2026.
+This README was updated on the 15th of February 2026.
 Made by Gabriel Barnard.

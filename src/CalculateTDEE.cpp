@@ -1,6 +1,6 @@
 /*
  * Made by Gabriel Barnard
- * Made on the 14th of February 2026
+ * Updated on the 15th of February 2026
  */
 
 
@@ -50,6 +50,13 @@ void CalculateTDEE::queryUser() {
 
     std::cout << "Required daily calories: ";
     std::cout << static_cast<int>(std::round(calcTDEE(bodyDetails)));
+
+    std::cout << '\n';
+    std::cout << "Would you like to continue? Input 'yes' or 'no': ";
+    utility->yesOrNoBool(notExitQuery);
+    if (notExitQuery) {
+        queryUser();
+    }
 }
 
 //Calculates the TDEE (Total Daily Energy Expenditure)

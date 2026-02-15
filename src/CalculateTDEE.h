@@ -1,6 +1,6 @@
 /*
  * Made by Gabriel Barnard
- * Made on the 14th of February 2026
+ * Updated on the 15th of February 2026
  */
 
 
@@ -21,7 +21,9 @@ class CalculateTDEE {
             bool isMale{};
             double activityLevel{};
         };
-        double activityLevelMultipliers[5] = {1.25, 1.375, 1.55, 1.725, 1.9};
+        static constexpr double activityLevelMultipliers[5] = {1.25, 1.375, 1.55, 1.725, 1.9};
+
+        bool notExitQuery{true};
 
         double calcTDEE(const BodyDetails& body); //TDEE = Total Daily Energy Expenditure
 };
